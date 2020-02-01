@@ -1,10 +1,43 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+# action.yml
+name: 'Github Status Updater'
+description: 'Update GitHub commit statuses'
+author: 'Minsu Lee <amond@amond.dev>'
+branding:
+  icon: 'check-circle'
+  color: 'green'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  action:  # id of input
+    description: 'Action to perform: update_state or update_branch_protection'
+    required: true
+    default: 'update_state'
+  token:  # id of input
+    description: 'Github access token'
+    required: true
+  owner:  # id of input
+    description: 'Github repository owner'
+    required: true
+  repo:  # id of input
+    description: 'Github repository name'
+    required: true
+  ref:  # id of input
+    description: 'Commit SHA, branch name or tag'
+    required: true
+  state:  # id of input
+    description: 'Commit state. Possible values are pending, success, error or failure'
+    required: true
+  context:  # id of input
+    description: 'Status label. Could be the name of a CI environment (e.g. my-ci)'
+    required: true
+  description:  # id of input
+    description: 'Action to perform: update_state or update_branch_protection'
+    required: true
+  url:  # id of input
+    description: 'URL of the page representing the status'
+    required: true
+
+outputs:
+
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
